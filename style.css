@@ -1,0 +1,146 @@
+.parallax {
+   position: relative;
+   z-index: 0;
+   min-height: 75vh;
+   display: grid;
+   grid-template-areas: "stack";
+ }
+ 
+ .parallax > * {
+   grid-area: stack;
+   animation: parallax linear;
+   animation-timeline: scroll();
+ }
+ 
+ .parallax > img {
+   width: 100%;
+ }
+ 
+ .primary-header,
+ .hero {
+   --parallax-speed: 30;
+   z-index: 10;
+ }
+ 
+ .bg {
+   --parallax-speed: 10;
+   z-index: 1;
+   min-height: 100%;
+   width: 100%;
+   object-fit: cover;
+ }
+ 
+ 
+ .rock {
+   --parallax-speed: 20;
+   z-index: 3;
+   position: absolute;
+   bottom: 200px;
+ }
+ 
+ .lady {
+   --parallax-speed: 30;
+   z-index: 3;
+   position: absolute;
+   bottom: 200px;
+ }
+   
+ .main-content {
+   position: relative;
+   z-index: 1;
+   background: hsl(235, 11%, 22%);
+   padding-block: 6rem;
+ }
+ 
+ @keyframes parallax {
+   to {
+     transform: 
+       translateY(calc(var(--parallax-speed)*100px));
+   }
+ }
+ 
+ /* general styling */
+ 
+ html {
+   color-scheme: dark;
+ }
+ 
+ body {
+   margin: 0;
+   font-family: "Poppins", sans-serif;
+   font-size: 1.25rem;
+   font-weight: 700;
+   text-transform: uppercase;
+ }
+ 
+ img {
+   display: block;
+   max-width: 100%;
+ }
+ 
+ .wrapper {
+   width: min(65rem, 100% - 4rem);
+   margin-inline: auto;
+ }
+ 
+ .flex-group {
+   display: flex;
+   gap: 1rem;
+ }
+  
+ .primary-header {
+   padding-block: 2rem;
+ }
+ 
+ .primary-header__inner {
+   display: flex;
+   justify-content: space-between;
+   align-items: center;
+ }
+ 
+ .primary-nav ul {
+   flex: 1;
+   list-style: none;
+   margin: 0;
+   padding: 0;
+   display: flex;
+   gap: 1rem;
+   justify-content: space-between;
+ }
+ 
+ .primary-nav a {
+   color: white;
+   font-weight: 700;
+   text-decoration: none;
+ }
+ 
+ .hero {
+   margin-block-start: max(20vh, 8rem);
+ }
+ 
+ .hero__title {
+   font-size: 6rem;
+   max-width: 10ch;
+   line-height: 1;
+   font-style: italic;
+   font-weight: 800;
+   position: relative;
+ 
+   > span {
+     font-style: normal;
+     font-size: 0.5em;
+     display: block;
+   }
+ 
+   &::after {
+     content: "";
+     position: absolute;
+     inset: 0;
+     background: black;
+     z-index: -1;
+     scale: 2;
+     opacity: 0.5;
+     filter: blur(5rem);
+     translate: -50%;
+   }
+ }
